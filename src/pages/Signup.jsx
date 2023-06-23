@@ -23,14 +23,15 @@ function SignUpPage ()
 
   return (
     <div
-      className="d-flex justify-content-center align-items-center"
+      className="d-flex justify-content-center align-items-center "
       style={{ height: "100vh" }}
     >
-      <div className="card">
+      <div className="card rounded-5">
         <div
-          className="card-body"
+          className="card-body rounded-5"
           style={{
             height: "50vh",
+            width:"50vw",
             background:
               "linear-gradient(to bottom right, #ffc107, #ffc120, #FFE072, #FFE076)",
           }}
@@ -44,7 +45,7 @@ function SignUpPage ()
               <div className="input-group">
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control rounded-pill"
                   id="username"
                   placeholder="Enter your username"
                   value={username}
@@ -59,7 +60,7 @@ function SignUpPage ()
               <div className="input-group">
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control rounded-pill"
                   id="email"
                   placeholder="Enter your email"
                   value={email}
@@ -74,7 +75,7 @@ function SignUpPage ()
               <div className="input-group">
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control rounded-pill"
                   id="password"
                   placeholder="Enter your password"
                   value={password}

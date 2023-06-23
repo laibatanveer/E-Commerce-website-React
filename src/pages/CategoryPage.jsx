@@ -10,8 +10,8 @@ export default function CategoryPage() {
 
 
     useEffect(() => {
-        axios.get(`https://dummyjson.com/products/category/${categoryName}`).then(json => setProducts(json.data.products))
-
+          axios.get(`https://dummyjson.com/products/category/${categoryName}`).then(json => setProducts(json.data.products))
+      
     }, [categoryName])
 
 
@@ -33,7 +33,7 @@ export default function CategoryPage() {
                                     <Card.Img variant="top" src={val.thumbnail} />
                                     <Card.Body>
                                         <Card.Title>{val.title} - {val.price}$</Card.Title>
-                                        <Card.Text>{val.description}
+                                        <Card.Text>{val.description}, {val.rating}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
