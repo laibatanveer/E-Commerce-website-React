@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 export default function Products() {
@@ -11,6 +11,7 @@ export default function Products() {
     axios
       .get("https://makeup-api.herokuapp.com/api/v1/products.json")
       .then((response) => setProducts(response.data));
+    
   }, []);
 
   return (
@@ -20,7 +21,7 @@ export default function Products() {
           PRODUCTS
         </h1>
         <p className="text-secondary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
+          Voluptatibus
           illum, laudantium earum sit saepe dolore aperiam vitae ullam iusto
           deserunt, ipsam asperiores temporibus! Quis exercitationem neque porro
           nisi saepe autem?
@@ -30,10 +31,8 @@ export default function Products() {
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {products.map((product, index) => (
           <div className="col" key={index}>
-            <Link
-              className="text-decoration-none"
-              to={`/products/${product.id}`}
-            >
+            <Link className="text-decoration-none" to={`/products/${product.id}`}>
+
               <Card className="rounded-top bg-light bg-gradient h-100">
                 <Card.Body>
                   <Card.Img

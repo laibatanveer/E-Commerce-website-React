@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { BiCategory } from "react-icons/bi";
 
 const Sidebar = () => {
   const [productTypes, setProductTypes] = useState([]);
@@ -18,31 +19,47 @@ const Sidebar = () => {
 
   return (
     <aside
-    className="shadow p-3 mb-5 bg-body-tertiary rounded"
+      className="shadow p-3 mb-5 bg-body-tertiary rounded"
       style={{
         backgroundColor: "#F7FBEF",
         padding: "6vh",
         paddingLeft: "8vh",
-        borderRadius: "44% 44% 44% 44% / 38% 38% 38% 38%  ",
+        borderRadius: "44% 44% 44% 44% / 38% 38% 38% 38%",
       }}
     >
-      <h2 style={{ color: "black", fontSize: "20px", marginBottom: "16px" }}>
-        {" "}
-        .Catgories
+      <h2
+        style={{
+          color: "black",
+          fontSize: "20px",
+          marginBottom: "16px",
+          fontFamily: "Oswald",
+        }}
+      >
+        <BiCategory style={{ marginRight: "8px" }} />
+        Categories
       </h2>
-      <ul style={{ listStyle: "none", padding: 0 }}>
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          fontFamily: "Oswald",
+        }}
+      >
         {productTypes.map((type, index) => (
           <li
             key={index}
             style={{
               color: "black",
               fontSize: "12px",
-              fontFamily: "Oswald",
-
               padding: "8px 12px",
             }}
           >
-            <Link to={`/products/category/${type}`}>{type}</Link>
+            <Link
+              to={`/products/category/${type}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {type}
+            </Link>
           </li>
         ))}
       </ul>

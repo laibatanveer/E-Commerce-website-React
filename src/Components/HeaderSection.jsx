@@ -4,6 +4,7 @@ import axios from 'axios';
 
 export default function HeaderSection() {
   const [banners, setBanners] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     axios
@@ -22,6 +23,14 @@ export default function HeaderSection() {
       });
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide(prevSlide => (prevSlide + 1) % banners.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [banners.length]);
+
   return (
     <div className="container">
       <div className="row">
@@ -31,20 +40,20 @@ export default function HeaderSection() {
       </div>
 
       <div className="row">
-        {banners.map((product, index) => (
-          <div className="col-md-4" key={index}>
+        {banners.length > 0 && (
+          <div className="col-md-4">
             <div className="banner-card">
-              <img className="banner-image" src={product.image_link} alt={product.name} />
+              <img className="banner-image img-fluid" src={banners[currentSlide].image_link} alt={banners[currentSlide].name} />
               <div className="banner-content">
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <Link to={`/products/${product.id}`} className="btn btn-primary">
+                <h3>{banners[currentSlide].name}</h3>
+                <p>{banners[currentSlide].description}</p>
+                <Link to={`/products/${banners[currentSlide].id}`} className="btn btn-primary">
                   View Details
                 </Link>
               </div>
             </div>
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

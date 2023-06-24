@@ -9,7 +9,7 @@ export default function Page404() {
         <h1 className="display-1">404</h1>
         <h2 className="display-4">Oops! Page Not Found</h2>
         <p className="lead">The page you are looking for does not exist.</p>
-        <Link to="/" className="mt-4 btn btn-warning">
+        <Link to="/" className="mt-4 btn btn-dark">
           Go to Home
         </Link>
       </div>

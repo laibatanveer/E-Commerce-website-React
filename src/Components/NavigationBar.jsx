@@ -42,8 +42,8 @@ function NavigationBar() {
               <Link className="ms-2 nav-link fw-normal" to="/signup">
                <h4> SignUp</h4>
               </Link>
-              <Link className="  btn btn-success rounded-pill " to="/login">
-                Login
+              <Link className="btn btn-dark mt-1 ms-2 " to="/login">
+                <h5>Login</h5>
               </Link>
             
             </Nav>

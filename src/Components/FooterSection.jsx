@@ -16,15 +16,17 @@ function FooterSection() {
       <div className="container py-4">
         <div className="row">
           <div className="col-md-4">
-            <h3 className="fst-italic" style={{ color: "#FFE250" }}>
-              .beautify
-            </h3>
+        
+              
+              <h3 className="fst-italic" style={{ color: "#FFE250" }}>
+              .beautify </h3>
+            
             <p
               className="fst-italic"
               style={{
                 fontFamily: "sans-serif",
                 color: "white",
-                fontSize: "100%",
+              
                 fontWeight: "lighter"
               }}
             >

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { RiUserFill, RiLockPasswordFill, RiMailFill } from "react-icons/ri";
+import {RiMailFill } from "react-icons/ri";
 import { FaUserAlt, FaUserLock } from "react-icons/fa";
-
 import Swal from "sweetalert2";
 
 function SignUpPage ()

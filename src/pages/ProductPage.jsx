@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ReactStars from 'react-stars';
 import Swal from 'sweetalert2';
+import { RiArrowDropUpLine, RiArrowDropDownLine, RiShoppingCartLine } from 'react-icons/ri';
 import ImageSection from '../Components/ImageSection';
 
 export default function ProductPage() {
@@ -64,7 +65,6 @@ export default function ProductPage() {
       });
   }, [productID]);
   
-
   return (
     <div className="container">
       <div className="text-center my-5">
@@ -82,15 +82,19 @@ export default function ProductPage() {
             disabled={productQuantity > 1 ? false : true}
             onClick={() => setProductQuantity(productQuantity - 1)}
           >
-            -
+            <RiArrowDropDownLine />
           </button>
           {productQuantity}
-          <button className="btn btn-dark mx-3" onClick={() => setProductQuantity(productQuantity + 1)}>
-            +
+          <button
+            className="btn btn-dark mx-3"
+            onClick={() => setProductQuantity(productQuantity + 1)}
+          >
+            <RiArrowDropUpLine />
           </button>
         </div>
 
         <button className="btn btn-dark" onClick={addToCart}>
+          <RiShoppingCartLine className="mr-2" />
           Add to Cart
         </button>
       </div>
@@ -102,10 +106,26 @@ export default function ProductPage() {
 
         <div className="col-md-6">
           <div className="container">
-            <div className="mb-5">
-              <h2 className="text-center">Reviews</h2>
-              <p className="text-center text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, sed.</p>
-            </div>
+          <div className="mb-5">
+  <h2 className="text-center">Reviews</h2>
+  {product.reviews &&
+    product.reviews.length > 0 &&
+    product.reviews.map((reviewItem, index) => (
+      <div key={index} className="card my-3">
+        <div className="card-body">
+          <p>{reviewItem.review}</p>
+          <div className="d-flex align-items-center">
+            <ReactStars count={5} size={24} edit={false} value={reviewItem.rating} color2={'#ffd700'} />
+            <span className="ms-3">({reviewItem.rating})</span>
+          </div>
+        </div>
+      </div>
+    ))}
+</div>
+
+
+
+          
 
             <div>
               <div className="form-floating">
@@ -114,7 +134,7 @@ export default function ProductPage() {
                   placeholder="Leave a comment here"
                   id="floatingTextarea2"
                   style={{ height: 100 }}
-                  defaultValue={review}
+                  value={review}
                   onChange={e => setReview(e.target.value)}
                 />
                 <label htmlFor="floatingTextarea2">Comments</label>
