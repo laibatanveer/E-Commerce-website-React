@@ -18,6 +18,7 @@ const Sidebar = () => {
 
   return (
     <aside
+    className="shadow p-3 mb-5 bg-body-tertiary rounded"
       style={{
         backgroundColor: "#F7FBEF",
         padding: "6vh",

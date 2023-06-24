@@ -10,13 +10,17 @@ export default function CategorySection() {
     axios
       .get('https://makeup-api.herokuapp.com/api/v1/products.json')
       .then(response => {
-        const types = [...new Set(response.data.map(product => ({ name: product.product_type, imgLink: product.image_link })))];
-        setCategories(types);
+        const uniqueCategories = Array.from(new Set(response.data.map(product => product.product_type)));
+        setCategories(uniqueCategories);
       })
       .catch(error => {
         console.error('Error fetching product types:', error);
       });
   }, []);
+
+  const cardAnimation = {
+    animation: 'fadeIn 0.5s ease-in-out',
+  };
 
   return (
     <div className="container">
@@ -27,11 +31,11 @@ export default function CategorySection() {
       <div className="row">
         {categories.map((category, index) => (
           <div className="col-md-4 my-4" key={index}>
-            <Link className="text-decoration-none" to={`/products/category/${category.name}`}>
-              <Card>
-                <Card.Img variant="top" src={category.imgLink} />
+            <Link className="text-decoration-none" to={`/products/category/${category}`}>
+              <Card className="shadow p-3 mb-5 bg-body-tertiary rounded" style={cardAnimation}>
+              <Card.Img variant="top" src={product.image_link} />
                 <Card.Body>
-                  <Card.Title>{category.name}</Card.Title>
+                  <Card.Title>{category}</Card.Title>
                 </Card.Body>
               </Card>
             </Link>

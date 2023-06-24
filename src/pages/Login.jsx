@@ -25,20 +25,22 @@ const LoginPage = () => {
     }
   };
 
+ 
   return (
     <div
-      className="d-flex justify-content-center align-items-center rounded-5"
+      className="d-flex justify-content-center align-items-center"
       style={{ height: "100vh" }}
      
     >
-      <div className="card rounded-5">
+      <div className="card rounded-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div
-          className="card-body rounded-5"
+          className="card-body rounded-5 "
           style={{
-            height: "50vh",
-            width:"50vw",
-            background:
-              "linear-gradient(to bottom right, #ffc107, #ffc120, #FFE072, #FFE076)",
+            height: "45vh",
+            width:"40vw",
+      
+      
+       
           }}
           
         >

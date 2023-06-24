@@ -6,11 +6,9 @@ import HeaderSection from "../Components/HeaderSection";
 export default function Home() {
   return (
     <>
-      <HeaderSection/>
+      <HeaderSection />
       <div className="container d-flex">
-      
         <div className="col-md-3">
-         
           <Sidebar />
         </div>
         <div className="col-md-9">

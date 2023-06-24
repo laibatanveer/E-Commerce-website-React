@@ -26,17 +26,16 @@ function SignUpPage ()
       className="d-flex justify-content-center align-items-center "
       style={{ height: "100vh" }}
     >
-      <div className="card rounded-5">
+      <div className="card rounded-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
         <div
           className="card-body rounded-5"
           style={{
             height: "50vh",
-            width:"50vw",
-            background:
-              "linear-gradient(to bottom right, #ffc107, #ffc120, #FFE072, #FFE076)",
+            width:"40vw",
+
           }}
         >
-          <h3 className="text-center fw-bold fst-italic mb-4">SIGN UP</h3>
+          <h3 className="text-center fw-bold  mb-4">SIGN UP</h3>
           <form onSubmit={handleSignUp}>
             <div className="form-group">
               <label htmlFor="username">
