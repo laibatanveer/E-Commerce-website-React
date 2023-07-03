@@ -1,12 +1,12 @@
 import React from "react";
 import CategoriesSection from "../Components/CategoriesSection";
 import Sidebar from "../Components/SideBar";
-import HeaderSection from "../Components/HeaderSection";
+import Banner from "../Components/Banner";
 
 export default function Home() {
   return (
     <>
-      <HeaderSection />
+      <Banner />
       <div className="container d-flex">
         <div className="col-md-3">
           <Sidebar />

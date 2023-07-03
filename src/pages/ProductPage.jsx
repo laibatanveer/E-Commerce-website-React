@@ -4,7 +4,6 @@ import axios from 'axios';
 import ReactStars from 'react-stars';
 import Swal from 'sweetalert2';
 import { RiArrowDropUpLine, RiArrowDropDownLine, RiShoppingCartLine } from 'react-icons/ri';
-import ImageSection from '../Components/ImageSection';
 
 export default function ProductPage() {
   const { productID } = useParams();
@@ -64,7 +63,7 @@ export default function ProductPage() {
         console.error('Error fetching product:', error);
       });
   }, [productID]);
-  
+
   return (
     <div className="container">
       <div className="text-center my-5">
@@ -85,10 +84,7 @@ export default function ProductPage() {
             <RiArrowDropDownLine />
           </button>
           {productQuantity}
-          <button
-            className="btn btn-dark mx-3"
-            onClick={() => setProductQuantity(productQuantity + 1)}
-          >
+          <button className="btn btn-dark mx-3" onClick={() => setProductQuantity(productQuantity + 1)}>
             <RiArrowDropUpLine />
           </button>
         </div>
@@ -101,31 +97,35 @@ export default function ProductPage() {
 
       <div className="row">
         <div className="col-md-6">
-          {product.images && product.images.length > 0 && <ImageSection images={product.images} />}
+          {product.image_link && (
+            <img src={product.image_link} alt={product.name} className="img-fluid w-800 h-80" />
+          )}
         </div>
 
         <div className="col-md-6">
           <div className="container">
-          <div className="mb-5">
-  <h2 className="text-center">Reviews</h2>
-  {product.reviews &&
-    product.reviews.length > 0 &&
-    product.reviews.map((reviewItem, index) => (
-      <div key={index} className="card my-3">
-        <div className="card-body">
-          <p>{reviewItem.review}</p>
-          <div className="d-flex align-items-center">
-            <ReactStars count={5} size={24} edit={false} value={reviewItem.rating} color2={'#ffd700'} />
-            <span className="ms-3">({reviewItem.rating})</span>
-          </div>
-        </div>
-      </div>
-    ))}
-</div>
-
-
-
-          
+            <div className="mb-5">
+              <h2 className="text-center">Reviews</h2>
+              {product.reviews &&
+                product.reviews.length > 0 &&
+                product.reviews.map((reviewItem, index) => (
+                  <div key={index} className="card my-3">
+                    <div className="card-body">
+                      <p>{reviewItem.review}</p>
+                      <div className="d-flex align-items-center">
+                        <ReactStars
+                          count={5}
+                          size={24}
+                          edit={false}
+                          value={reviewItem.rating}
+                          color2={'#ffd700'}
+                        />
+                        <span className="ms-3">({reviewItem.rating})</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
 
             <div>
               <div className="form-floating">
