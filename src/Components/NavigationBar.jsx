@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { FaShopware } from "react-icons/fa";
+
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 
@@ -12,18 +12,15 @@ function NavigationBar() {
   return (
     <>
       <Navbar
-      
-     className="shadow-sm"
+        className="shadow-sm"
         style={{
-
           fontFamily: "Oswald",
           backgroundImage: `url(${bgImg})`,
           backgroundSize: "20vw 20vh",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <Container
-    >
+        <Container>
           <Link className="navbar-brand " to="/">
             {" "}
             <pre>
@@ -40,12 +37,11 @@ function NavigationBar() {
                 <h4>Products</h4>
               </Link>
               <Link className="ms-2 nav-link fw-normal" to="/signup">
-               <h4> SignUp</h4>
+                <h4> SignUp</h4>
               </Link>
               <Link className="btn btn-dark mt-1 ms-2 " to="/login">
                 <h5>Login</h5>
               </Link>
-            
             </Nav>
           </Navbar.Collapse>
         </Container>

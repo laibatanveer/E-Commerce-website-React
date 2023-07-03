@@ -11,11 +11,10 @@ import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
 
 export default function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   return (
     <>
       <NavigationBar />
-      
 
       {user ? (
         <Routes>
@@ -41,4 +40,3 @@ export default function App() {
     </>
   );
 }
-
