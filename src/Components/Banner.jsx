@@ -21,8 +21,8 @@ const Banner = () => {
       {productImage && (
         <img src={productImage} alt="Banner" className="img-fluid rounded-circle mb-4" />
       )}
-      <h1 className="display-4 fst-italic">Greetings Gorgeous Ladies!</h1>
-      <p className="lead">
+      <h2 className="display-4 ">Greetings Gorgeous Ladies!</h2>
+      <p className="lead fst-italic">
         Shop the latest makeup products & enjoy a seamless shopping experience.
       </p>
     </div>

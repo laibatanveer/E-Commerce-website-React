@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import {RiMailFill } from "react-icons/ri";
+import { RiMailFill } from "react-icons/ri";
 import { FaUserAlt, FaUserLock } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-function SignUpPage ()
- {
+function SignUpPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,10 +11,9 @@ function SignUpPage ()
   const handleSignUp = (e) => {
     e.preventDefault();
 
-
     Swal.fire({
       icon: "success",
-      title: "Sign Up Successful!",
+      title: "DONE!",
       text: "You have successfully signed up.",
     });
   };
@@ -30,8 +28,7 @@ function SignUpPage ()
           className="card-body rounded-5"
           style={{
             height: "50vh",
-            width:"40vw",
-
+            width: "40vw",
           }}
         >
           <h3 className="text-center fw-bold  mb-4">SIGN UP</h3>
@@ -92,6 +89,6 @@ function SignUpPage ()
       </div>
     </div>
   );
-};
+}
 
 export default SignUpPage;

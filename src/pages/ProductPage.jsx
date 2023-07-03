@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -11,6 +13,7 @@ export default function ProductPage() {
   const [review, setReview] = useState('');
   const [ratingStar, setRatingStar] = useState(0);
   const [productQuantity, setProductQuantity] = useState(1);
+  const [submittedReviews, setSubmittedReviews] = useState([]);
 
   const ratingChanged = newRating => {
     setRatingStar(newRating);
@@ -24,6 +27,8 @@ export default function ProductPage() {
     };
 
     console.log(payload);
+
+    setSubmittedReviews([...submittedReviews, payload]);
 
     Swal.fire({
       title: 'Successfully Submitted!',
@@ -72,7 +77,7 @@ export default function ProductPage() {
         </h1>
         <p className="text-secondary">{product.description}</p>
         <div className="d-flex justify-content-center">
-          <ReactStars count={5} size={24} edit={false} value={product.rating} color2={'#ffd700'} />
+          <ReactStars count={5} size={24} edit= {false} value={RatingStar} color2={'#ffd700'} />
         </div>
 
         <div className="my-3">
@@ -109,6 +114,25 @@ export default function ProductPage() {
               {product.reviews &&
                 product.reviews.length > 0 &&
                 product.reviews.map((reviewItem, index) => (
+                  <div key={index} className="card my-3">
+                    <div className="card-body">
+                      <p>{reviewItem.review}</p>
+                      <div className="d-flex align-items-center">
+                        <ReactStars
+                          count={5}
+                          size={24}
+                          edit={false}
+                          value={reviewItem.rating}
+                          color2={'#ffd700'}
+                        />
+                        <span className="ms-3">({reviewItem.rating})</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+              {submittedReviews.length > 0 &&
+                submittedReviews.map((reviewItem, index) => (
                   <div key={index} className="card my-3">
                     <div className="card-body">
                       <p>{reviewItem.review}</p>
@@ -163,3 +187,4 @@ export default function ProductPage() {
     </div>
   );
 }
+
