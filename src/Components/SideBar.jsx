@@ -19,7 +19,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className="shadow p-3 mb-5 bg-body-tertiary rounded"
+      className="shadow p-3 mt-4 bg-body-tertiary rounded h-80 "
       style={{
         backgroundColor: "#F7FBEF",
         padding: "6vh",
@@ -50,8 +50,9 @@ const Sidebar = () => {
             key={index}
             style={{
               color: "black",
-              fontSize: "12px",
-              padding: "8px 12px",
+              fontSize: "100%",
+              padding: "5vh 12vh",
+              margin: "0, auto"
             }}
           >
             <Link
