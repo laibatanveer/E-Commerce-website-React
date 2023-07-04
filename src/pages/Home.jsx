@@ -7,11 +7,11 @@ export default function Home() {
   return (
     <>
       <Banner />
-      <div className="container d-flex">
-        <div className="col-md-3">
+      <div className="container d-flex ">
+        {/* <div className="col-md-3 h-100">
           <Sidebar />
-        </div>
-        <div className="col-md-9">
+        </div> */}
+        <div >
           <CategoriesSection />
         </div>
       </div>

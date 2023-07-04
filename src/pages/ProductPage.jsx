@@ -1,21 +1,23 @@
-
-
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import ReactStars from 'react-stars';
-import Swal from 'sweetalert2';
-import { RiArrowDropUpLine, RiArrowDropDownLine, RiShoppingCartLine } from 'react-icons/ri';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import ReactStars from "react-stars";
+import Swal from "sweetalert2";
+import {
+  RiArrowDropUpLine,
+  RiArrowDropDownLine,
+  RiShoppingCartLine,
+} from "react-icons/ri";
 
 export default function ProductPage() {
   const { productID } = useParams();
   const [product, setProduct] = useState({});
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
   const [ratingStar, setRatingStar] = useState(0);
   const [productQuantity, setProductQuantity] = useState(1);
   const [submittedReviews, setSubmittedReviews] = useState([]);
 
-  const ratingChanged = newRating => {
+  const ratingChanged = (newRating) => {
     setRatingStar(newRating);
   };
 
@@ -23,7 +25,7 @@ export default function ProductPage() {
     const payload = {
       productID: productID,
       review: review,
-      rating: ratingStar
+      rating: ratingStar,
     };
 
     console.log(payload);
@@ -31,13 +33,13 @@ export default function ProductPage() {
     setSubmittedReviews([...submittedReviews, payload]);
 
     Swal.fire({
-      title: 'Successfully Submitted!',
-      text: 'We really appreciate your Review!',
-      icon: 'success',
-      confirmButtonText: 'Happy Shopping'
+      title: "Successfully Submitted!",
+      text: "We really appreciate your Review!",
+      icon: "success",
+      confirmButtonText: "Happy Shopping",
     });
 
-    setReview('');
+    setReview("");
     setRatingStar(0);
   };
 
@@ -45,27 +47,27 @@ export default function ProductPage() {
     const payload = {
       ...product,
       productQuantity,
-      totalPrice: product.price * productQuantity
+      totalPrice: product.price * productQuantity,
     };
 
     console.log(payload);
 
     Swal.fire({
-      title: 'Added to Cart!',
-      text: 'Check your Cart for Check Out',
-      icon: 'success',
-      confirmButtonText: 'Continue Shopping'
+      title: "Added to Cart!",
+      text: "Check your Cart for Check Out",
+      icon: "success",
+      confirmButtonText: "Continue Shopping",
     });
   };
 
   useEffect(() => {
     axios
       .get(`https://makeup-api.herokuapp.com/api/v1/products/${productID}.json`)
-      .then(response => {
+      .then((response) => {
         setProduct(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching product:', error);
+      .catch((error) => {
+        console.error("Error fetching product:", error);
       });
   }, [productID]);
 
@@ -77,7 +79,13 @@ export default function ProductPage() {
         </h1>
         <p className="text-secondary">{product.description}</p>
         <div className="d-flex justify-content-center">
-          <ReactStars count={5} size={24} edit= {false} value={RatingStar} color2={'#ffd700'} />
+          <ReactStars
+            count={5}
+            size={24}
+            edit={false}
+            value={ratingStar}
+            color2={"#ffd700"}
+          />
         </div>
 
         <div className="my-3">
@@ -89,7 +97,10 @@ export default function ProductPage() {
             <RiArrowDropDownLine />
           </button>
           {productQuantity}
-          <button className="btn btn-dark mx-3" onClick={() => setProductQuantity(productQuantity + 1)}>
+          <button
+            className="btn btn-dark mx-3"
+            onClick={() => setProductQuantity(productQuantity + 1)}
+          >
             <RiArrowDropUpLine />
           </button>
         </div>
@@ -103,7 +114,11 @@ export default function ProductPage() {
       <div className="row">
         <div className="col-md-6">
           {product.image_link && (
-            <img src={product.image_link} alt={product.name} className="img-fluid w-800 h-80" />
+            <img
+              src={product.image_link}
+              alt={product.name}
+              className="img-fluid w-60 h-50 rounded ms-6 mt-4 "
+            />
           )}
         </div>
 
@@ -123,7 +138,7 @@ export default function ProductPage() {
                           size={24}
                           edit={false}
                           value={reviewItem.rating}
-                          color2={'#ffd700'}
+                          color2={"#ffd700"}
                         />
                         <span className="ms-3">({reviewItem.rating})</span>
                       </div>
@@ -142,7 +157,7 @@ export default function ProductPage() {
                           size={24}
                           edit={false}
                           value={reviewItem.rating}
-                          color2={'#ffd700'}
+                          color2={"#ffd700"}
                         />
                         <span className="ms-3">({reviewItem.rating})</span>
                       </div>
@@ -159,7 +174,7 @@ export default function ProductPage() {
                   id="floatingTextarea2"
                   style={{ height: 100 }}
                   value={review}
-                  onChange={e => setReview(e.target.value)}
+                  onChange={(e) => setReview(e.target.value)}
                 />
                 <label htmlFor="floatingTextarea2">Comments</label>
               </div>
@@ -172,7 +187,7 @@ export default function ProductPage() {
                     size={24}
                     value={ratingStar}
                     onChange={ratingChanged}
-                    color2={'#ffd700'}
+                    color2={"#ffd700"}
                   />
                   <span className="ms-3">({ratingStar})</span>
                 </div>
@@ -187,4 +202,3 @@ export default function ProductPage() {
     </div>
   );
 }
-

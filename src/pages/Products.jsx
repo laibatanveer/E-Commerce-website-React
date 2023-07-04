@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Sidebar from "../Components/SideBar";
+
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -13,7 +15,12 @@ export default function Products() {
   }, []);
 
   return (
-    <div className="container">
+
+    <div className="container d-flex">
+      <div className="col-md-3 me-4">
+<Sidebar/>
+      </div>
+      <div className="col-md-9">
       <div className="my-5 text-center">
         <h1 className="fw-bold">PRODUCTS</h1>
         <p className="text-secondary">
@@ -46,6 +53,8 @@ export default function Products() {
           </div>
         ))}
       </div>
+      </div>
+     
     </div>
   );
 }
