@@ -17,7 +17,7 @@ export default function Products() {
   return (
 
     <div className="container d-flex">
-      <div className="col-md-3 me-4">
+      <div className="col-md-3 me-4 position-sticky">
 <Sidebar/>
       </div>
       <div className="col-md-9">

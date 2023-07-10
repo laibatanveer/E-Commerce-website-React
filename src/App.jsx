@@ -9,10 +9,10 @@ import NavigationBar from "./Components/NavigationBar";
 import FooterSection from "./Components/FooterSection";
 import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
-// import Cart from "./Components/Cart";
+import Cart from "./Components/Cart";
 
 export default function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(true);
   return (
     <>
       <NavigationBar />
@@ -20,13 +20,15 @@ export default function App() {
       {user ? (
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/cart" element={<Cart/>} /> */}
+
           <Route path="/products" element={<Products />} />
           <Route path="/products/:productID" element={<ProductPage />} />
           <Route
             path="/products/category/:categoryName"
             element={<CategoryPage />}
           />
+           <Route path="/Cart" element={<Cart/>} />
+
           <Route path="*" element={<Page404 />} />
         </Routes>
       ) : (
@@ -42,3 +44,5 @@ export default function App() {
     </>
   );
 }
+
+
